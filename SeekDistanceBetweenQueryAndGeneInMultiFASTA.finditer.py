@@ -135,8 +135,8 @@ for i in range(3, n):
                                                         if x != None:
                                                             for j in x[2]:
                                                                 print gtftext
-                                                                print "absolute location cis-\t", j.start()+1, j.end()
-                                                                print "relative location cis-\t",
+                                                                print "absolute location cis\t", j.start()+1, j.end()
+                                                                print "relative location cis\t",
                                                                 #print j.start()+1 - GtfStart, j.end() - GtfStart
                                                                 if GtfStart > j.end():
                                                                     print j.start()+1 - GtfStart, j.end() - GtfStart
@@ -150,40 +150,40 @@ for i in range(3, n):
                                                                 print gtftext
                                                                 print "absolute location trans\t", j.start()+1, j.end()
                                                                 print "relative location trans\t",
-                                                                #print  -( j.start()+1 - GtfEnd ), -( j.end() - GtfEnd )
-                                                                if GtfEnd < j.start()+1:
-                                                                    print -( j.start()+1 - GtfEnd ), -( j.end() - GtfEnd )
-                                                                elif GtfEnd < j.end() and GtfEnd >= j.start()+1:
-                                                                    print -( j.start()+1 - GtfEnd ) + 1, -( j.end() - GtfEnd ) # feature starts from +1 not 0
-                                                                elif GtfEnd >= j.end():
-                                                                    print -( j.start()+1 - GtfEnd ) + 1, -( j.end() - GtfEnd ) + 1
-                                                    elif GtfStrand == "-":
-                                                        x = PatternSearch(  ReverseComplement( QuerySequence ), ChromSequence, QueryAccession, ChromAccession )
-                                                        if x != None:
-                                                            for j in x[2]:
-                                                                print gtftext
-                                                                print "absolute location cis-\t", j.start()+1, j.end()
-                                                                print "relative location cis-\t",
-                                                                #print  -( j.start()+1 - GtfEnd ), -( j.end() - GtfEnd )
-                                                                if GtfEnd < j.start()+1:
-                                                                    print -( j.start()+1 - GtfEnd ), -( j.end() - GtfEnd )
-                                                                elif GtfEnd < j.end() and GtfEnd >= j.start()+1:
-                                                                    print -( j.start()+1 - GtfEnd ) + 1, -( j.end() - GtfEnd ) # feature starts from +1 not 0
-                                                                elif GtfEnd >= j.end():
-                                                                    print -( j.start()+1 - GtfEnd ) + 1, -( j.end() - GtfEnd ) + 1 # feature starts from +1 not 0
-                                                        y = PatternSearch(  QuerySequence, ChromSequence, QueryAccession, ChromAccession )
-                                                        if y != None:
-                                                            for j in y[2]:
-                                                                print gtftext
-                                                                print "absolute location trans\t", j.start()+1, j.end()
-                                                                print "relative location trans\t",
                                                                 #print j.start()+1 - GtfStart, j.end() - GtfStart
                                                                 if GtfStart > j.end():
                                                                     print j.start()+1 - GtfStart, j.end() - GtfStart
                                                                 elif GtfStart > j.start()+1 and GtfStart <= j.end():
                                                                     print j.start()+1 - GtfStart, j.end() - GtfStart + 1 # feature starts from +1 not 0
                                                                 elif GtfStart <= j.start()+1:
-                                                                    print j.start()+1 - GtfStart + 1, j.end() - GtfStart + 1 
+                                                                    print j.start()+1 - GtfStart + 1, j.end() - GtfStart + 1 # feature starts from +1 not 0
+                                                    elif GtfStrand == "-":
+                                                        x = PatternSearch(  ReverseComplement( QuerySequence ), ChromSequence, QueryAccession, ChromAccession )
+                                                        if x != None:
+                                                            for j in x[2]:
+                                                                print gtftext
+                                                                print "absolute location cis\t", j.start()+1, j.end()
+                                                                print "relative location cis\t",
+                                                                #print GtfEnd - j.end(), GtfEnd - j.start()+1
+                                                                if GtfEnd < j.start()+1:
+                                                                    print GtfEnd - j.end(), GtfEnd - j.start()+1
+                                                                elif GtfEnd < j.end() and GtfEnd >= j.start()+1:
+                                                                    print GtfEnd - j.end(), GtfEnd - j.start()+1 + 1 # feature starts from +1 not 0
+                                                                elif GtfEnd >= j.end():
+                                                                    print GtfEnd - j.end() + 1, GtfEnd - j.start()+1 + 1 # feature starts from +1 not 0
+                                                        y = PatternSearch(  QuerySequence, ChromSequence, QueryAccession, ChromAccession )
+                                                        if y != None:
+                                                            for j in y[2]:
+                                                                print gtftext
+                                                                print "absolute location trans\t", j.start()+1, j.end()
+                                                                print "relative location trans\t",
+                                                                #print GtfEnd - j.end(), GtfEnd - j.start()+1
+                                                                if GtfEnd < j.start()+1:
+                                                                    print GtfEnd - j.end(), GtfEnd - j.start()+1
+                                                                elif GtfEnd < j.end() and GtfEnd >= j.start()+1:
+                                                                    print GtfEnd - j.end(), GtfEnd - j.start()+1 + 1 # feature starts from +1 not 0
+                                                                elif GtfEnd >= j.end():
+                                                                    print GtfEnd - j.end() + 1, GtfEnd - j.start()+1 + 1 # feature starts from +1 not 0
 
                                     ####
                                     if not chromtext:
