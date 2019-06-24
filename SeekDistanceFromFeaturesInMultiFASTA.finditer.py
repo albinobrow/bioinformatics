@@ -167,11 +167,11 @@ for i in range(3, n):
                                                                 print "relative location cis\t",
                                                                 #print GtfEnd - j.end(), GtfEnd - j.start()+1
                                                                 if GtfEnd < j.start()+1:
-                                                                    print GtfEnd - j.end(), GtfEnd - j.start()+1
+                                                                    print GtfEnd - j.end(), GtfEnd - ( j.start()+1 )
                                                                 elif GtfEnd < j.end() and GtfEnd >= j.start()+1:
-                                                                    print GtfEnd - j.end(), GtfEnd - j.start()+1 + 1 # feature starts from +1 not 0
+                                                                    print GtfEnd - j.end(), GtfEnd - ( j.start()+1 ) + 1 # feature starts from +1 not 0
                                                                 elif GtfEnd >= j.end():
-                                                                    print GtfEnd - j.end() + 1, GtfEnd - j.start()+1 + 1 # feature starts from +1 not 0
+                                                                    print GtfEnd - j.end() + 1, GtfEnd - ( j.start()+1 ) + 1 # feature starts from +1 not 0
                                                         y = PatternSearch(  QuerySequence, ChromSequence, QueryAccession, ChromAccession )
                                                         if y != None:
                                                             for j in y[2]:
@@ -180,11 +180,11 @@ for i in range(3, n):
                                                                 print "relative location trans\t",
                                                                 #print GtfEnd - j.end(), GtfEnd - j.start()+1
                                                                 if GtfEnd < j.start()+1:
-                                                                    print GtfEnd - j.end(), GtfEnd - j.start()+1
+                                                                    print GtfEnd - j.end(), GtfEnd - (j.start()+1)
                                                                 elif GtfEnd < j.end() and GtfEnd >= j.start()+1:
-                                                                    print GtfEnd - j.end(), GtfEnd - j.start()+1 + 1 # feature starts from +1 not 0
+                                                                    print GtfEnd - j.end(), GtfEnd - (j.start()+1) + 1 # feature starts from +1 not 0
                                                                 elif GtfEnd >= j.end():
-                                                                    print GtfEnd - j.end() + 1, GtfEnd - j.start()+1 + 1 # feature starts from +1 not 0
+                                                                    print GtfEnd - j.end() + 1, GtfEnd - (j.start()+1) + 1 # feature starts from +1 not 0
                                     ####
                                     if not chromtext:
                                         fpr.close()
