@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# python ver. 2.4 or more higher
+# python ver. 2.4 or more higher version recommended
 # [SYNONYM]$ python < this script > < reference genome fasta > < gtf or gff3 > < query sequence fasta >
 
 import re, sys, string
@@ -172,6 +172,8 @@ for i in range(3, n):
                                                                     print GtfEnd - j.end(), GtfEnd - ( j.start()+1 ) + 1 # feature starts from +1 not 0
                                                                 elif GtfEnd >= j.end():
                                                                     print GtfEnd - j.end() + 1, GtfEnd - ( j.start()+1 ) + 1 # feature starts from +1 not 0
+                                                                #print ChromSequence[j.start(): j.end()]
+                                                                print ChromSequence[ 8440: 9101 ]
                                                         y = PatternSearch(  QuerySequence, ChromSequence, QueryAccession, ChromAccession )
                                                         if y != None:
                                                             for j in y[2]:
@@ -185,6 +187,7 @@ for i in range(3, n):
                                                                     print GtfEnd - j.end(), GtfEnd - (j.start()+1) + 1 # feature starts from +1 not 0
                                                                 elif GtfEnd >= j.end():
                                                                     print GtfEnd - j.end() + 1, GtfEnd - (j.start()+1) + 1 # feature starts from +1 not 0
+                                                                print ChromSequence[j.start(): j.end()]
                                     ####
                                     if not chromtext:
                                         fpr.close()
