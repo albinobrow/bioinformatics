@@ -7,15 +7,15 @@ class Normal_Distribution:
         self.myu=myu
         self.sigma=sigma
 
-    def Cumulative_Probability(self):
+    def Probability_Density_Function(self):
         self.r=1/(self.sigma*math.sqrt(math.pi*2))
         self.p=-1*(self.x-self.myu)**2/2/self.sigma**2
         return self.r*math.exp(self.p)
 
-    def Probability_density_Function(self):
+    def Cumulative_Distribution_Function(self):
         return 1/2*( 1 + math.erf( ( self.x - self.myu )/self.sigma/math.sqrt(2) ) )
 
 
-# It is useful to know the probability at the left side of the point, x
+# For example, it is useful to know the probability at the left side of the point, x, of normal distribution curve.
 # USAGE
-# res = Normal_Distribution(self, myu, sigma, x).Probability_density_Function()
+# res = Normal_Distribution(self, myu, sigma, x).Cumulative_Distribution_Function()
