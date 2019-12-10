@@ -1,0 +1,21 @@
+import math
+
+class Normal_Distribution:
+
+    def __init__(self, myu, sigma, x):
+        self.x=x
+        self.myu=myu
+        self.sigma=sigma
+
+    def Cumulative_Probability(self):
+        self.r=1/(self.sigma*math.sqrt(math.pi*2))
+        self.p=-1*(self.x-self.myu)**2/2/self.sigma**2
+        return self.r*math.exp(self.p)
+
+    def Probability_density_Function(self):
+        return 1/2*( 1 + math.erf( ( self.x - self.myu )/self.sigma/math.sqrt(2) ) )
+
+
+# It is useful to know the probability at the left side of the point, x
+# USAGE
+# res = Normal_Distribution(self, myu, sigma, x).Probability_density_Function()
