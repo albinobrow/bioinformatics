@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-
+#
 # python ver. 2.4 or more higher version recommended
 # [SYNONYM]$ python < this script > < reference genome fasta > < gtf or gff3 > < query sequence fasta >
 
@@ -29,7 +29,6 @@ def ReadSingleFASTA( text, tag, seq ):
                 seq = ""
         else:
             seq += text
-
 
     if QueryPatternMatch:
         if tag == "":
@@ -137,7 +136,7 @@ for i in range(3, n):
                                                                 print gtftext
                                                                 print "absolute location cis\t", j.start()+1, j.end()
                                                                 print "relative location cis\t",
-                                                                #print j.start()+1 - GtfStart, j.end() - GtfStart
+                                                                
                                                                 if GtfStart > j.end():
                                                                     print j.start()+1 - GtfStart, j.end() - GtfStart
                                                                 elif GtfStart > j.start()+1 and GtfStart <= j.end():
@@ -150,14 +149,13 @@ for i in range(3, n):
                                                                 print gtftext
                                                                 print "absolute location trans\t", j.start()+1, j.end()
                                                                 print "relative location trans\t",
-                                                                #print j.start()+1 - GtfStart, j.end() - GtfStart
+
                                                                 if GtfStart > j.end():
                                                                     print j.start()+1 - GtfStart, j.end() - GtfStart
                                                                 elif GtfStart > j.start()+1 and GtfStart <= j.end():
                                                                     print j.start()+1 - GtfStart, j.end() - GtfStart + 1 # feature starts from +1 not 0
                                                                 elif GtfStart <= j.start()+1:
                                                                     print j.start()+1 - GtfStart + 1, j.end() - GtfStart + 1 # feature starts from +1 not 0
-
                                                     elif GtfStrand == "-":
                                                         x = PatternSearch(  ReverseComplement( QuerySequence ), ChromSequence, QueryAccession, ChromAccession )
                                                         if x != None:
@@ -165,29 +163,28 @@ for i in range(3, n):
                                                                 print gtftext
                                                                 print "absolute location cis\t", j.start()+1, j.end()
                                                                 print "relative location cis\t",
-                                                                #print GtfEnd - j.end(), GtfEnd - j.start()+1
+                                                                
+                                                                print ReverseComplement( a ) 
+                                                                print ReverseComplement( a )
                                                                 if GtfEnd < j.start()+1:
                                                                     print GtfEnd - j.end(), GtfEnd - ( j.start()+1 )
                                                                 elif GtfEnd < j.end() and GtfEnd >= j.start()+1:
                                                                     print GtfEnd - j.end(), GtfEnd - ( j.start()+1 ) + 1 # feature starts from +1 not 0
                                                                 elif GtfEnd >= j.end():
                                                                     print GtfEnd - j.end() + 1, GtfEnd - ( j.start()+1 ) + 1 # feature starts from +1 not 0
-                                                                #print ChromSequence[j.start(): j.end()]
-                                                                print ChromSequence[ 8440: 9101 ]
                                                         y = PatternSearch(  QuerySequence, ChromSequence, QueryAccession, ChromAccession )
                                                         if y != None:
                                                             for j in y[2]:
                                                                 print gtftext
                                                                 print "absolute location trans\t", j.start()+1, j.end()
                                                                 print "relative location trans\t",
-                                                                #print GtfEnd - j.end(), GtfEnd - j.start()+1
+                                                                
                                                                 if GtfEnd < j.start()+1:
                                                                     print GtfEnd - j.end(), GtfEnd - (j.start()+1)
                                                                 elif GtfEnd < j.end() and GtfEnd >= j.start()+1:
                                                                     print GtfEnd - j.end(), GtfEnd - (j.start()+1) + 1 # feature starts from +1 not 0
                                                                 elif GtfEnd >= j.end():
                                                                     print GtfEnd - j.end() + 1, GtfEnd - (j.start()+1) + 1 # feature starts from +1 not 0
-                                                                print ChromSequence[j.start(): j.end()]
                                     ####
                                     if not chromtext:
                                         fpr.close()
@@ -195,7 +192,7 @@ for i in range(3, n):
                                     ChromAccession = chromtext
                                     ChromSequence = ""
                             else:
-                                ChromSequence += chromtext
+                                ChromSequence += chromtext.upper() # turn every letter of chromosome sequence into capital case
                     ####
                     if not text:
                         fpq.close()
